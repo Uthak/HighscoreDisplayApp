@@ -23,15 +23,41 @@ public class HighscoreDataGatherer : MonoBehaviour
 
     private void Start()
     {
-        // Start checking the highscores at an interval:
-        StartCoroutine("CheckData");
-
-        // Load data of previous days:
-        if(_day != 1)
+        if (DataAvailable())
         {
-            //LoadPreviousDays();
+            // Start checking the highscores at an interval:
+            StartCoroutine("CheckData");
+
+            // Load data of previous days:
+            if (_day != 1)
+            {
+                //LoadPreviousDays();
+            }
         }
     }
+
+    /// <summary>
+    /// Check at the desired location (path) if a Json (save-file) has already been created. If not, return.
+    /// </summary>
+    /// <returns></returns>
+    bool DataAvailable()
+    {
+        if (System.IO.File.ReadAllText(_filePath) != null)
+        {
+            Debug.Log("Data found!");
+            return true;
+        }else 
+        {
+            Debug.Log("No data has been saved yet, or you are using an incorrect path!");
+            return false;
+        }
+    }
+
+    /// <summary>
+    /// Retrieves the highscore data from the host game, reads it and saves it in public variables
+    /// within this script. This happens on an adjustable interval.
+    /// </summary>
+    /// <returns></returns>
     IEnumerator CheckData()
     {
         LoadCurrentHighscoresFromJson();
@@ -47,7 +73,7 @@ public class HighscoreDataGatherer : MonoBehaviour
         currentHighscores = JsonUtility.FromJson<HighscoreData>(highscoreData);
 
         // testing:
-        Debug.Log("Load Complete!");
+        //Debug.Log("Load Complete!");
     }
     /*
     void LoadPreviousDays()

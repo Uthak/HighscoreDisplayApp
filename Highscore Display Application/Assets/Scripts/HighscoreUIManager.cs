@@ -7,7 +7,7 @@ public class HighscoreUIManager : MonoBehaviour
 {
     [Header("Highscore UI Settings:")]
     [SerializeField] float _updateInterval = 1.0f;
-    //[SerializeField] float _rotationInterval = 15.0f;
+    [SerializeField] float _rotationInterval = 15.0f;
 
     [Space(10)]
     [SerializeField] TextMeshProUGUI _speedNameUI;
@@ -21,7 +21,12 @@ public class HighscoreUIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI _crownsTimeUI;
     [SerializeField] TextMeshProUGUI _crownsCrownsUI;
 
+    [Space(10)]
+    //List<GameObject> _interfaceCarousel = new List<GameObject>();
+    [SerializeField] GameObject[] _interfaceCarousel;
+
     HighscoreData _highscoreData;
+    HighscoreDataGatherer _highscoreDataGatherer;
 
     string _speedName;
     string _speedEmail;
@@ -35,21 +40,33 @@ public class HighscoreUIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        //_highscoreData = FindObjectOfType<HighscoreDataGatherer>().currentHighscores;
+        // instructions:
+        Debug.Log("Instructions: You can switch the monitor where any app/game is to be displayed by pressing WIN + Shift + left/right arrow.");
+
+        _highscoreDataGatherer = FindObjectOfType<HighscoreDataGatherer>();
 
         StartCoroutine("UpdateHighscoreDisplay");
+
+        if(_interfaceCarousel != null)
+        {
+            StartCoroutine(UIRotation());
+        }
     }
 
+    /// <summary>
+    /// Retrieves the highscore data from the HighscoreDataGatherer-script and displays it.
+    /// </summary>
+    /// <returns></returns>
     IEnumerator UpdateHighscoreDisplay()
     {
-        _highscoreData = FindObjectOfType<HighscoreDataGatherer>().currentHighscores;
-
-        // update highscore information:
+        // retrieve newest highscore-data:
+        _highscoreData = _highscoreDataGatherer.currentHighscores;
+        // check for new speed-run record:
         _speedName = _highscoreData.speedName;
         _speedEmail = _highscoreData.speedEmail;
         _speedTime = _highscoreData.speedTime;
         _speedCrowns = _highscoreData.speedCrowns;
-
+        // check for new crown-run record:
         _crownsName = _highscoreData.crownsName;
         _crownsEmail = _highscoreData.crownsEmail;
         _crownsTime = _highscoreData.crownsTime;
@@ -69,5 +86,28 @@ public class HighscoreUIManager : MonoBehaviour
         yield return new WaitForSeconds(_updateInterval);
 
         StartCoroutine("UpdateHighscoreDisplay");
+    }
+
+    /// <summary>
+    /// Rotates the UI-carousel at an adjustable interval, looping through every UI in the array.
+    /// This only happens if there is more than one UI in the array.
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator UIRotation()
+    {
+        for(int i = 0; i < _interfaceCarousel.Length; i++)
+        {
+            // turn UI on:
+            _interfaceCarousel[i].SetActive(true);
+
+            // wait for set time (secs):
+            yield return new WaitForSeconds(_rotationInterval);
+
+            // turn UI off and move on to the next one:
+            _interfaceCarousel[i].SetActive(false);
+        }
+
+        // start over:
+        StartCoroutine(UIRotation());
     }
 }
