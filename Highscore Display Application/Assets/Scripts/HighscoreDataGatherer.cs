@@ -7,7 +7,8 @@ public class HighscoreDataGatherer : MonoBehaviour
     // tutorial on Json-savings: https://www.youtube.com/watch?v=pVXEUtMy_Hc 
 
     [Tooltip("Enter the exact file path where the highscore-stats Json gets saved on the gaming-device here! (Exact means EXACT!)")]
-    [SerializeField] string _filePath = "xxx";
+    [SerializeField] string _filePathSpeed = "xxx";
+    [SerializeField] string _filePathCrowns = "xxx";
 
     [Space(10)]
     [Tooltip("Day 1 is the 24th; day 2 is the 25th; day 3 is the 26th; day 4 is 27th. Switch at the start of every day!")]
@@ -18,8 +19,10 @@ public class HighscoreDataGatherer : MonoBehaviour
     [SerializeField] float _updateInterval = 30.0f;
 
     [Space(30)]
-    [Tooltip("DO NOT TOUCH:")]
-    public HighscoreData currentHighscores = new HighscoreData(); // this contains the most recent highscores of the ongoing day.
+    [Header("DO NOT TOUCH:")]
+    public SpeedHighscoreData currentSpeedHighscores = new SpeedHighscoreData(); // this contains the most recent highscores of the ongoing day.
+    public CrownsHighscoreData currentCrownsHighscores = new CrownsHighscoreData(); // this contains the most recent highscores of the ongoing day.
+
 
     private void Start()
     {
@@ -42,7 +45,7 @@ public class HighscoreDataGatherer : MonoBehaviour
     /// <returns></returns>
     bool DataAvailable()
     {
-        if (System.IO.File.ReadAllText(_filePath) != null)
+        if (System.IO.File.ReadAllText(_filePathSpeed) != null && System.IO.File.ReadAllText(_filePathCrowns) != null)
         {
             Debug.Log("Data found!");
             return true;
@@ -69,8 +72,14 @@ public class HighscoreDataGatherer : MonoBehaviour
 
     public void LoadCurrentHighscoresFromJson()
     {
-        string highscoreData = System.IO.File.ReadAllText(_filePath);
-        currentHighscores = JsonUtility.FromJson<HighscoreData>(highscoreData);
+        //string highscoreData = System.IO.File.ReadAllText(_filePath);
+        //currentHighscores = JsonUtility.FromJson<HighscoreData>(highscoreData);
+
+        string speedHighscoreData = System.IO.File.ReadAllText(_filePathSpeed);
+        currentSpeedHighscores = JsonUtility.FromJson<SpeedHighscoreData>(speedHighscoreData);
+        
+        string crownsHighscoreData = System.IO.File.ReadAllText(_filePathCrowns);
+        currentCrownsHighscores = JsonUtility.FromJson<CrownsHighscoreData>(crownsHighscoreData);
 
         // testing:
         //Debug.Log("Load Complete!");
@@ -168,15 +177,18 @@ public class HighscoreDataGatherer : MonoBehaviour
 }
 
 [System.Serializable]
-public class HighscoreData
+public class SpeedHighscoreData
 {
     [Header("Speed Highscore:")]
     public string speedName;
     public string speedEmail;
     public float speedTime;
     public int speedCrowns;
+}
 
-    [Space(10)]
+[System.Serializable]
+public class CrownsHighscoreData
+{
     [Header("Crowns Highscore:")]
     public string crownsName;
     public string crownsEmail;

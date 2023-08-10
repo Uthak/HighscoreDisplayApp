@@ -1651,14 +1651,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e28c8e83d24d034f89a3444539dbb73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _filePath: C:/Users/fmund/AppData/LocalLow/Lone Flower Games/Origami Lovers/HighscoreData.json
+  _filePathSpeed: C:/Users/fmund/AppData/LocalLow/Lone Flower Games/Origami Lovers/SpeedHighscoreData.json
+  _filePathCrowns: C:/Users/fmund/AppData/LocalLow/Lone Flower Games/Origami Lovers/CrownsHighscoreData.json
   _day: 1
   _updateInterval: 1
-  currentHighscores:
+  currentSpeedHighscores:
     speedName: 
     speedEmail: 
     speedTime: 0
     speedCrowns: 0
+  currentCrownsHighscores:
     crownsName: 
     crownsEmail: 
     crownsTime: 0
