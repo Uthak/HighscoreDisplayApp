@@ -1750,7 +1750,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &591127233
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2863,6 +2863,7 @@ MonoBehaviour:
   _interfaceCarousel:
   - {fileID: 1534695005}
   - {fileID: 254606495}
+  - {fileID: 591127232}
 --- !u!1 &949482553
 GameObject:
   m_ObjectHideFlags: 0
