@@ -4,17 +4,19 @@ using UnityEngine;
 using System.IO;
 
 
-public class HighscoreDataGatherer : MonoBehaviour
+public class TEST : MonoBehaviour
 {
-    [Tooltip("Enter the base file path where the highscore-stats Jsons are saved on the gaming-device.")]
+}
+    /*[Tooltip("Enter the base file path where the highscore-stats Jsons are saved on the gaming-device.")]
     [SerializeField] private string baseFilePath = "xxx";
 
     [Space(10)]
     [Tooltip("This determines the length of the intervals to check for new highscores. Adjust as needed.")]
-    [SerializeField] float _updateInterval = 1.0f;
+    [SerializeField] float _updateInterval = 30.0f;
 
     [Space(30)]
     [Header("DO NOT TOUCH:")]
+
     public List<HighscoreEntry> overallSpeedHighscores = new List<HighscoreEntry>();
     public List<HighscoreEntry> overallCrownsHighscores = new List<HighscoreEntry>();
 
@@ -91,26 +93,6 @@ public class HighscoreDataGatherer : MonoBehaviour
         return new List<HighscoreEntry>();
     }
 
-    /// <summary>
-    /// This script has getter methods added to return the highscore lists.
-    /// </summary>
-    /// <returns></returns>
-    public List<HighscoreEntry> GetOverallSpeedHighscores() => overallSpeedHighscores;
-    public List<HighscoreEntry> GetOverallCrownsHighscores() => overallCrownsHighscores;
-
-    public List<HighscoreEntry> GetDayOneSpeedHighscores() => dayOneSpeedHighscores;
-    public List<HighscoreEntry> GetDayOneCrownsHighscores() => dayOneCrownsHighscores;
-
-    public List<HighscoreEntry> GetDayTwoSpeedHighscores() => dayTwoSpeedHighscores;
-    public List<HighscoreEntry> GetDayTwoCrownsHighscores() => dayTwoCrownsHighscores;
-
-    public List<HighscoreEntry> GetDayThreeSpeedHighscores() => dayThreeSpeedHighscores;
-    public List<HighscoreEntry> GetDayThreeCrownsHighscores() => dayThreeCrownsHighscores;
-
-    public List<HighscoreEntry> GetDayFourSpeedHighscores() => dayFourSpeedHighscores;
-    public List<HighscoreEntry> GetDayFourCrownsHighscores() => dayFourCrownsHighscores;
-
-
     public void TestOutput()
     {
         Debug.Log("---- Top 5 Overall Speed Highscores ----");
@@ -169,148 +151,4 @@ public class SerializableList<T>
     {
         items = list;
     }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*{
-    // tutorial on Json-savings: https://www.youtube.com/watch?v=pVXEUtMy_Hc 
-
-    [Tooltip("Enter the exact file path where the highscore-stats Json gets saved on the gaming-device here! (Exact means EXACT!)")]
-    [SerializeField] string _filePathSpeed = "xxx";
-    [SerializeField] string _filePathCrowns = "xxx";
-
-    [Space(10)]
-    [Tooltip("Day 1 is the 24th; day 2 is the 25th; day 3 is the 26th; day 4 is 27th. Switch at the start of every day!")]
-    [SerializeField] int _day = 1;
-
-    [Space(10)]
-    [Tooltip("This determins the length of the intervals to check for new highscores. Adjust as needed.")]
-    [SerializeField] float _updateInterval = 30.0f;
-
-    [Space(30)]
-    [Header("DO NOT TOUCH:")]
-    public SpeedHighscoreData currentSpeedHighscores = new SpeedHighscoreData(); // this contains the most recent highscores of the ongoing day.
-    public CrownsHighscoreData currentCrownsHighscores = new CrownsHighscoreData(); // this contains the most recent highscores of the ongoing day.
-
-
-    private void Start()
-    {
-        if (DataAvailable())
-        {
-            // Start checking the highscores at an interval:
-            StartCoroutine("CheckData");
-
-            // Load data of previous days:
-            if (_day != 1)
-            {
-                //LoadPreviousDays();
-            }
-        }
-    }
-
-    /// <summary>
-    /// Check at the desired location (path) if a Json (save-file) has already been created. If not, return.
-    /// </summary>
-    /// <returns></returns>
-    bool DataAvailable()
-    {
-        if (System.IO.File.ReadAllText(_filePathSpeed) != null && System.IO.File.ReadAllText(_filePathCrowns) != null)
-        {
-            Debug.Log("Data found!");
-            return true;
-        }else 
-        {
-            Debug.Log("No data has been saved yet, or you are using an incorrect path!");
-            return false;
-        }
-    }
-
-    /// <summary>
-    /// Retrieves the highscore data from the host game, reads it and saves it in public variables
-    /// within this script. This happens on an adjustable interval.
-    /// </summary>
-    /// <returns></returns>
-    IEnumerator CheckData()
-    {
-        LoadCurrentHighscoresFromJson();
-
-        yield return new WaitForSeconds(_updateInterval);
-
-        StartCoroutine("CheckData");
-    }
-
-    public void LoadCurrentHighscoresFromJson()
-    {
-        //string highscoreData = System.IO.File.ReadAllText(_filePath);
-        //currentHighscores = JsonUtility.FromJson<HighscoreData>(highscoreData);
-
-        string speedHighscoreData = System.IO.File.ReadAllText(_filePathSpeed);
-        currentSpeedHighscores = JsonUtility.FromJson<SpeedHighscoreData>(speedHighscoreData);
-        
-        string crownsHighscoreData = System.IO.File.ReadAllText(_filePathCrowns);
-        currentCrownsHighscores = JsonUtility.FromJson<CrownsHighscoreData>(crownsHighscoreData);
-
-        // testing:
-        //Debug.Log("Load Complete!");
-    }
-}
-
-[System.Serializable]
-public class SpeedHighscoreData
-{
-    [Header("Speed Highscore:")]
-    public string speedName;
-    public string speedEmail;
-    public float speedTime;
-    public int speedCrowns;
-}
-
-[System.Serializable]
-public class CrownsHighscoreData
-{
-    [Header("Crowns Highscore:")]
-    public string crownsName;
-    public string crownsEmail;
-    public float crownsTime;
-    public int crownsCrowns;
-}
-
-/// <summary>
-/// Use this to save the daily data (best-of-day) in a list of entries which gets sorted by 
-/// </summary>
-[System.Serializable]
-public class DailyData
-{
-    public List<IndividualEntry> individualEntries = new List<IndividualEntry>();
-}
-
-[System.Serializable]
-public class IndividualEntry
-{
-    public string name;
-    public string email;
-
-    public float time;
-    public int crowns;
 }*/

@@ -7,6 +7,143 @@ public class HighscoreUIManager : MonoBehaviour
 {
     [Header("Highscore UI Settings:")]
     [SerializeField] float _updateInterval = 1.0f;
+    [SerializeField] float _rotationInterval = 5.0f;
+
+    [Header("Overall Highscores UI")]
+    [SerializeField] private TextMeshProUGUI[] _overallSpeedNamesUI;
+    [SerializeField] private TextMeshProUGUI[] _overallSpeedEmailsUI;
+    [SerializeField] private TextMeshProUGUI[] _overallSpeedTimesUI;
+    [SerializeField] private TextMeshProUGUI[] _overallSpeedCrownsUI;
+
+    [SerializeField] private TextMeshProUGUI[] _overallCrownsNamesUI;
+    [SerializeField] private TextMeshProUGUI[] _overallCrownsEmailsUI;
+    [SerializeField] private TextMeshProUGUI[] _overallCrownsTimesUI;
+    [SerializeField] private TextMeshProUGUI[] _overallCrownsCrownsUI;
+
+    [Header("Day One Highscores UI")]
+    [SerializeField] private TextMeshProUGUI[] _dayOneSpeedNamesUI;
+    [SerializeField] private TextMeshProUGUI[] _dayOneSpeedEmailsUI;
+    [SerializeField] private TextMeshProUGUI[] _dayOneSpeedTimesUI;
+    [SerializeField] private TextMeshProUGUI[] _dayOneSpeedCrownsUI;
+
+    [SerializeField] private TextMeshProUGUI[] _dayOneCrownsNamesUI;
+    [SerializeField] private TextMeshProUGUI[] _dayOneCrownsEmailsUI;
+    [SerializeField] private TextMeshProUGUI[] _dayOneCrownsTimesUI;
+    [SerializeField] private TextMeshProUGUI[] _dayOneCrownsCrownsUI;
+
+    [Header("Day Two Highscores UI")]
+    [SerializeField] private TextMeshProUGUI[] _dayTwoSpeedNamesUI;
+    [SerializeField] private TextMeshProUGUI[] _dayTwoSpeedEmailsUI;
+    [SerializeField] private TextMeshProUGUI[] _dayTwoSpeedTimesUI;
+    [SerializeField] private TextMeshProUGUI[] _dayTwoSpeedCrownsUI;
+
+    [SerializeField] private TextMeshProUGUI[] _dayTwoCrownsNamesUI;
+    [SerializeField] private TextMeshProUGUI[] _dayTwoCrownsEmailsUI;
+    [SerializeField] private TextMeshProUGUI[] _dayTwoCrownsTimesUI;
+    [SerializeField] private TextMeshProUGUI[] _dayTwoCrownsCrownsUI;
+
+    [Header("Day Three Highscores UI")]
+    [SerializeField] private TextMeshProUGUI[] _dayThreeSpeedNamesUI;
+    [SerializeField] private TextMeshProUGUI[] _dayThreeSpeedEmailsUI;
+    [SerializeField] private TextMeshProUGUI[] _dayThreeSpeedTimesUI;
+    [SerializeField] private TextMeshProUGUI[] _dayThreeSpeedCrownsUI;
+
+    [SerializeField] private TextMeshProUGUI[] _dayThreeCrownsNamesUI;
+    [SerializeField] private TextMeshProUGUI[] _dayThreeCrownsEmailsUI;
+    [SerializeField] private TextMeshProUGUI[] _dayThreeCrownsTimesUI;
+    [SerializeField] private TextMeshProUGUI[] _dayThreeCrownsCrownsUI;
+
+    [Header("Day Four Highscores UI")]
+    [SerializeField] private TextMeshProUGUI[] _dayFourSpeedNamesUI;
+    [SerializeField] private TextMeshProUGUI[] _dayFourSpeedEmailsUI;
+    [SerializeField] private TextMeshProUGUI[] _dayFourSpeedTimesUI;
+    [SerializeField] private TextMeshProUGUI[] _dayFourSpeedCrownsUI;
+
+    [SerializeField] private TextMeshProUGUI[] _dayFourCrownsNamesUI;
+    [SerializeField] private TextMeshProUGUI[] _dayFourCrownsEmailsUI;
+    [SerializeField] private TextMeshProUGUI[] _dayFourCrownsTimesUI;
+    [SerializeField] private TextMeshProUGUI[] _dayFourCrownsCrownsUI;
+
+    [SerializeField] GameObject[] _interfaceCarousel;
+
+    HighscoreDataGatherer _highscoreDataGatherer;
+
+    private void OnEnable()
+    {
+        // instructions:
+        Debug.Log("Instructions: You can switch the monitor where any app/game is displayed by pressing WIN + Shift + left/right arrow.");
+
+
+        _highscoreDataGatherer = FindObjectOfType<HighscoreDataGatherer>();
+
+        StartCoroutine(UpdateHighscoreDisplay());
+
+        if (_interfaceCarousel != null)
+        {
+            StartCoroutine(UIRotation());
+        }
+    }
+
+    IEnumerator UpdateHighscoreDisplay()
+    {
+        UpdateUIForList(_overallSpeedNamesUI, _overallSpeedEmailsUI, _overallSpeedTimesUI, _overallSpeedCrownsUI, _highscoreDataGatherer.GetOverallSpeedHighscores());
+        UpdateUIForList(_overallCrownsNamesUI, _overallCrownsEmailsUI, _overallCrownsTimesUI, _overallCrownsCrownsUI, _highscoreDataGatherer.GetOverallCrownsHighscores());
+
+        UpdateUIForList(_dayOneSpeedNamesUI, _dayOneSpeedEmailsUI, _dayOneSpeedTimesUI, _dayOneSpeedCrownsUI, _highscoreDataGatherer.GetDayOneSpeedHighscores());
+        UpdateUIForList(_dayOneCrownsNamesUI, _dayOneCrownsEmailsUI, _dayOneCrownsTimesUI, _dayOneCrownsCrownsUI, _highscoreDataGatherer.GetDayOneCrownsHighscores());
+
+        UpdateUIForList(_dayTwoSpeedNamesUI, _dayTwoSpeedEmailsUI, _dayTwoSpeedTimesUI, _dayTwoSpeedCrownsUI, _highscoreDataGatherer.GetDayTwoSpeedHighscores());
+        UpdateUIForList(_dayTwoCrownsNamesUI, _dayTwoCrownsEmailsUI, _dayTwoCrownsTimesUI, _dayTwoCrownsCrownsUI, _highscoreDataGatherer.GetDayTwoCrownsHighscores());
+
+        UpdateUIForList(_dayThreeSpeedNamesUI, _dayThreeSpeedEmailsUI, _dayThreeSpeedTimesUI, _dayThreeSpeedCrownsUI, _highscoreDataGatherer.GetDayThreeSpeedHighscores());
+        UpdateUIForList(_dayThreeCrownsNamesUI, _dayThreeCrownsEmailsUI, _dayThreeCrownsTimesUI, _dayThreeCrownsCrownsUI, _highscoreDataGatherer.GetDayThreeCrownsHighscores());
+
+        UpdateUIForList(_dayFourSpeedNamesUI, _dayFourSpeedEmailsUI, _dayFourSpeedTimesUI, _dayFourSpeedCrownsUI, _highscoreDataGatherer.GetDayFourSpeedHighscores());
+        UpdateUIForList(_dayFourCrownsNamesUI, _dayFourCrownsEmailsUI, _dayFourCrownsTimesUI, _dayFourCrownsCrownsUI, _highscoreDataGatherer.GetDayFourCrownsHighscores());
+
+        yield return new WaitForSeconds(_updateInterval);
+        StartCoroutine(UpdateHighscoreDisplay());
+    }
+
+    void UpdateUIForList(TextMeshProUGUI[] namesUI, TextMeshProUGUI[] emailsUI, TextMeshProUGUI[] timesUI, TextMeshProUGUI[] crownsUI, List<HighscoreEntry> entries)
+    {
+        for (int i = 0; i < namesUI.Length && i < entries.Count; i++)
+        {
+            namesUI[i].text = entries[i].name;
+            //emailsUI[i].text = entries[i].email;
+            timesUI[i].text = FormatTime(entries[i].time);
+            crownsUI[i].text = entries[i].crowns.ToString();
+        }
+    }
+
+    string FormatTime(float time)
+    {
+        int minutes = (int)time / 60;
+        int seconds = (int)time - 60 * minutes;
+        int milliseconds = (int)(1000 * (time - minutes * 60 - seconds));
+        return string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliseconds);
+    }
+
+    IEnumerator UIRotation()
+    {
+        for (int i = 0; i < _interfaceCarousel.Length; i++)
+        {
+            _interfaceCarousel[i].SetActive(true);
+            yield return new WaitForSeconds(_rotationInterval);
+            _interfaceCarousel[i].SetActive(false);
+        }
+        StartCoroutine(UIRotation());
+    }
+}
+
+    
+
+
+
+// old but working for single entries:
+    /*
+    [Header("Highscore UI Settings:")]
+    [SerializeField] float _updateInterval = 1.0f;
     [SerializeField] float _rotationInterval = 15.0f;
 
     [Space(10)]
@@ -124,4 +261,4 @@ public class HighscoreUIManager : MonoBehaviour
         // start over:
         StartCoroutine(UIRotation());
     }
-}
+}*/
