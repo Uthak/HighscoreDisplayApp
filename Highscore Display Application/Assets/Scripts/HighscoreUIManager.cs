@@ -9,6 +9,23 @@ public class HighscoreUIManager : MonoBehaviour
     [SerializeField] float _updateInterval = 1.0f;
     [SerializeField] float _rotationInterval = 5.0f;
 
+    [Header("Identify Daily Victors UI:")]
+    [SerializeField] GameObject _identificationUI;
+    bool _identificationUIActive = false;
+    [Space(5)]
+    [SerializeField] TextMeshProUGUI _day1_speedMail;
+    [SerializeField] TextMeshProUGUI _day1_crownsMail;
+    [Space(5)]
+    [SerializeField] TextMeshProUGUI _day2_speedMail;
+    [SerializeField] TextMeshProUGUI _day2_crownsMail;
+    [Space(5)]
+    [SerializeField] TextMeshProUGUI _day3_speedMail;
+    [SerializeField] TextMeshProUGUI _day3_crownsMail;
+    [Space(5)]
+    [SerializeField] TextMeshProUGUI _day4_speedMail;
+    [SerializeField] TextMeshProUGUI _day4_crownsMail;
+
+
     [Header("Overall Highscores UI")]
     [SerializeField] private TextMeshProUGUI[] _overallSpeedNamesUI;
     [SerializeField] private TextMeshProUGUI[] _overallSpeedEmailsUI;
@@ -72,7 +89,7 @@ public class HighscoreUIManager : MonoBehaviour
     {
         // instructions:
         Debug.Log("Instructions: You can switch the monitor where any app/game is displayed by pressing WIN + Shift + left/right arrow.");
-
+        Debug.Log("Ctrl+Shift+1 will toggle the UI that displays the emails of daily victors in a s");
 
         _highscoreDataGatherer = FindObjectOfType<HighscoreDataGatherer>();
 
@@ -81,6 +98,54 @@ public class HighscoreUIManager : MonoBehaviour
         if (_interfaceCarousel != null)
         {
             StartCoroutine(UIRotation());
+        }
+    }
+
+    // Listen for Ctrl+Shift+1 combination:
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            ToggleIdentificationUI();
+        }
+    }
+
+    private void ToggleIdentificationUI()
+    {
+        _identificationUIActive = !_identificationUIActive;
+
+        if (_identificationUIActive)
+        {
+            // Print the email values for each day based on the data we have:
+            PrintDailyWinnerMail("Day 1 Speed Winner", _highscoreDataGatherer.GetDayOneSpeedHighscores());
+            PrintDailyWinnerMail("Day 1 Crowns Winner", _highscoreDataGatherer.GetDayOneCrownsHighscores());
+
+            PrintDailyWinnerMail("Day 2 Speed Winner", _highscoreDataGatherer.GetDayTwoSpeedHighscores());
+            PrintDailyWinnerMail("Day 2 Crowns Winner", _highscoreDataGatherer.GetDayTwoCrownsHighscores());
+
+            PrintDailyWinnerMail("Day 3 Speed Winner", _highscoreDataGatherer.GetDayThreeSpeedHighscores());
+            PrintDailyWinnerMail("Day 3 Crowns Winner", _highscoreDataGatherer.GetDayThreeCrownsHighscores());
+
+            PrintDailyWinnerMail("Day 4 Speed Winner", _highscoreDataGatherer.GetDayFourSpeedHighscores());
+            PrintDailyWinnerMail("Day 4 Crowns Winner", _highscoreDataGatherer.GetDayFourCrownsHighscores());
+        }
+    }
+
+    private void PrintDailyWinnerMail(string title, List<HighscoreEntry> entries)
+    {
+        if (entries != null && entries.Count > 0)
+        {
+            if (entries[0].email != "test@test.test" && entries[0].name != "[name]" && entries[0].time > 0)
+            {
+                Debug.Log(title + ": " + entries[0].email);  // assuming the top entry is the winner for the day
+            }else
+            {
+                Debug.Log(title + ": [none]");
+            }
+        }
+        else
+        {
+            Debug.Log(title + ": [none]");
         }
     }
 
