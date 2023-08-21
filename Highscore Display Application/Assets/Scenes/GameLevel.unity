@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.26503348, g: 0.5538099, b: 0.6095666, a: 1}
+  m_IndirectSpecularColor: {r: 0.26500455, g: 0.5538201, b: 0.609474, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8388,6 +8388,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _updateInterval: 1
   _rotationInterval: 5
+  _identificationUI: {fileID: 0}
+  _day1_speedMail: {fileID: 0}
+  _day1_crownsMail: {fileID: 0}
+  _day2_speedMail: {fileID: 0}
+  _day2_crownsMail: {fileID: 0}
+  _day3_speedMail: {fileID: 0}
+  _day3_crownsMail: {fileID: 0}
+  _day4_speedMail: {fileID: 0}
+  _day4_crownsMail: {fileID: 0}
   _overallSpeedNamesUI:
   - {fileID: 814458048}
   _overallSpeedEmailsUI: []
@@ -10546,7 +10555,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a0319f8cffd5cd642bdcd3fbf8f50c79, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7a8d83cc1634a9c4da829c8310ad5a7c, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
