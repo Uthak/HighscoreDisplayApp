@@ -286,12 +286,11 @@ public class HighscoreUIManager : MonoBehaviour
 
     IEnumerator UIRotation()
     {
-        GameObject currentDayUI = GetCurrentDayUI();  // Get the UI for the current day
-
         for (int i = 0; i < _interfaceCarousel.Length; i++)
         {
             if (i == _dayInterfaceSlot)  // If this slot is for the current day's UI
             {
+                GameObject currentDayUI = GetCurrentDayUI();  // Get the UI for the current day
                 currentDayUI.SetActive(true);
                 yield return new WaitForSeconds(_rotationInterval);
                 currentDayUI.SetActive(false);

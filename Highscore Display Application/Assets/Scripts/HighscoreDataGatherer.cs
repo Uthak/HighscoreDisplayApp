@@ -15,23 +15,23 @@ public class HighscoreDataGatherer : MonoBehaviour
 
     [Space(30)]
     [Header("DO NOT TOUCH:")]
-     List<HighscoreEntry> overallSpeedHighscores = new List<HighscoreEntry>();
-    public List<HighscoreEntry> overallCrownsHighscores = new List<HighscoreEntry>();
+    List<HighscoreEntry> overallSpeedHighscores = new List<HighscoreEntry>();
+    List<HighscoreEntry> overallCrownsHighscores = new List<HighscoreEntry>();
 
-    public List<HighscoreEntry> dayOneSpeedHighscores = new List<HighscoreEntry>();
-    public List<HighscoreEntry> dayOneCrownsHighscores = new List<HighscoreEntry>();
+    List<HighscoreEntry> dayOneSpeedHighscores = new List<HighscoreEntry>();
+    List<HighscoreEntry> dayOneCrownsHighscores = new List<HighscoreEntry>();
 
-    public List<HighscoreEntry> dayTwoSpeedHighscores = new List<HighscoreEntry>();
-    public List<HighscoreEntry> dayTwoCrownsHighscores = new List<HighscoreEntry>();
+    List<HighscoreEntry> dayTwoSpeedHighscores = new List<HighscoreEntry>();
+    List<HighscoreEntry> dayTwoCrownsHighscores = new List<HighscoreEntry>();
 
-    public List<HighscoreEntry> dayThreeSpeedHighscores = new List<HighscoreEntry>();
-    public List<HighscoreEntry> dayThreeCrownsHighscores = new List<HighscoreEntry>();
+    List<HighscoreEntry> dayThreeSpeedHighscores = new List<HighscoreEntry>();
+    List<HighscoreEntry> dayThreeCrownsHighscores = new List<HighscoreEntry>();
 
-    public List<HighscoreEntry> dayFourSpeedHighscores = new List<HighscoreEntry>();
-    public List<HighscoreEntry> dayFourCrownsHighscores = new List<HighscoreEntry>();
+    List<HighscoreEntry> dayFourSpeedHighscores = new List<HighscoreEntry>();
+    List<HighscoreEntry> dayFourCrownsHighscores = new List<HighscoreEntry>();
 
-    public List<HighscoreEntry> dayFiveSpeedHighscores = new List<HighscoreEntry>();
-    public List<HighscoreEntry> dayFiveCrownsHighscores = new List<HighscoreEntry>();
+    List<HighscoreEntry> dayFiveSpeedHighscores = new List<HighscoreEntry>();
+    List<HighscoreEntry> dayFiveCrownsHighscores = new List<HighscoreEntry>();
 
     private void Start()
     {

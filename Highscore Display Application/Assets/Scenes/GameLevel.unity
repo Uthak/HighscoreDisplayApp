@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.26500455, g: 0.5538201, b: 0.609474, a: 1}
+  m_IndirectSpecularColor: {r: 0.26503348, g: 0.5538099, b: 0.6095666, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10132,6 +10132,164 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427330202}
   m_CullTransparentMesh: 1
+--- !u!1001 &428308872
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2090139719}
+    m_Modifications:
+    - target: {fileID: 1958699325249248017, guid: 88715a5ed66a6864d8622fa795e06bb8,
+        type: 3}
+      propertyPath: m_Name
+      value: ManualDayOverwriteUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958699325249248017, guid: 88715a5ed66a6864d8622fa795e06bb8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958699325249248018, guid: 88715a5ed66a6864d8622fa795e06bb8,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958699325249248018, guid: 88715a5ed66a6864d8622fa795e06bb8,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958699325249248018, guid: 88715a5ed66a6864d8622fa795e06bb8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958699325249248018, guid: 88715a5ed66a6864d8622fa795e06bb8,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958699325249248018, guid: 88715a5ed66a6864d8622fa795e06bb8,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958699325249248018, guid: 88715a5ed66a6864d8622fa795e06bb8,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958699325249248018, guid: 88715a5ed66a6864d8622fa795e06bb8,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958699325249248018, guid: 88715a5ed66a6864d8622fa795e06bb8,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 664.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958699325249248018, guid: 88715a5ed66a6864d8622fa795e06bb8,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 282.774
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958699325249248018, guid: 88715a5ed66a6864d8622fa795e06bb8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958699325249248018, guid: 88715a5ed66a6864d8622fa795e06bb8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958699325249248018, guid: 88715a5ed66a6864d8622fa795e06bb8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958699325249248018, guid: 88715a5ed66a6864d8622fa795e06bb8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958699325249248018, guid: 88715a5ed66a6864d8622fa795e06bb8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958699325249248018, guid: 88715a5ed66a6864d8622fa795e06bb8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958699325249248018, guid: 88715a5ed66a6864d8622fa795e06bb8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958699325249248018, guid: 88715a5ed66a6864d8622fa795e06bb8,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 332.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958699325249248018, guid: 88715a5ed66a6864d8622fa795e06bb8,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 91.387024
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958699325249248018, guid: 88715a5ed66a6864d8622fa795e06bb8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958699325249248018, guid: 88715a5ed66a6864d8622fa795e06bb8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958699325249248018, guid: 88715a5ed66a6864d8622fa795e06bb8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958699326137210751, guid: 88715a5ed66a6864d8622fa795e06bb8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 937506200}
+    - target: {fileID: 1958699326137210751, guid: 88715a5ed66a6864d8622fa795e06bb8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetDateManually
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 88715a5ed66a6864d8622fa795e06bb8, type: 3}
+--- !u!224 &428308873 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1958699325249248018, guid: 88715a5ed66a6864d8622fa795e06bb8,
+    type: 3}
+  m_PrefabInstance: {fileID: 428308872}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &428308874 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1958699324732279787, guid: 88715a5ed66a6864d8622fa795e06bb8,
+    type: 3}
+  m_PrefabInstance: {fileID: 428308872}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &428308875 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1958699325249248017, guid: 88715a5ed66a6864d8622fa795e06bb8,
+    type: 3}
+  m_PrefabInstance: {fileID: 428308872}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &432910140
 GameObject:
   m_ObjectHideFlags: 0
@@ -21354,16 +21512,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseFilePath: C:/Users/fmund/AppData/LocalLow/Lone Flower Games/Origami Lovers
   _updateInterval: 1
-  overallSpeedHighscores: []
-  overallCrownsHighscores: []
-  dayOneSpeedHighscores: []
-  dayOneCrownsHighscores: []
-  dayTwoSpeedHighscores: []
-  dayTwoCrownsHighscores: []
-  dayThreeSpeedHighscores: []
-  dayThreeCrownsHighscores: []
-  dayFourSpeedHighscores: []
-  dayFourCrownsHighscores: []
 --- !u!4 &937506199
 Transform:
   m_ObjectHideFlags: 0
@@ -21393,25 +21541,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _updateInterval: 1
   _rotationInterval: 7
-  _identificationUI: {fileID: 0}
-  _day1_speedMail: {fileID: 0}
-  _day1_crownsMail: {fileID: 0}
-  _day2_speedMail: {fileID: 0}
-  _day2_crownsMail: {fileID: 0}
-  _day3_speedMail: {fileID: 0}
-  _day3_crownsMail: {fileID: 0}
-  _day4_speedMail: {fileID: 0}
-  _day4_crownsMail: {fileID: 0}
+  _currentDay: 0
+  _overwriteDayUI: {fileID: 428308875}
+  _overwriteDayInputField: {fileID: 428308874}
+  _dayInterfaceSlot: 1
+  _dayOneInterface: {fileID: 153235399}
+  _dayTwoInterface: {fileID: 153235399}
+  _dayThreeInterface: {fileID: 153235399}
+  _dayFourInterface: {fileID: 153235399}
+  _dayFiveInterface: {fileID: 153235399}
   _overallSpeedNamesUI:
   - {fileID: 814458048}
-  _overallSpeedEmailsUI: []
   _overallSpeedTimesUI:
   - {fileID: 1449382999397359829}
   _overallSpeedCrownsUI:
   - {fileID: 1449383000487779832}
   _overallCrownsNamesUI:
   - {fileID: 2023076518}
-  _overallCrownsEmailsUI: []
   _overallCrownsTimesUI:
   - {fileID: 365285637}
   _overallCrownsCrownsUI:
@@ -21422,7 +21568,6 @@ MonoBehaviour:
   - {fileID: 1658019207}
   - {fileID: 1728724376}
   - {fileID: 284811292}
-  _dayOneSpeedEmailsUI: []
   _dayOneSpeedTimesUI:
   - {fileID: 866769187}
   - {fileID: 436815157}
@@ -21441,7 +21586,6 @@ MonoBehaviour:
   - {fileID: 1543472474}
   - {fileID: 119765172}
   - {fileID: 796208984}
-  _dayOneCrownsEmailsUI: []
   _dayOneCrownsTimesUI:
   - {fileID: 212726964}
   - {fileID: 1492732171}
@@ -21455,29 +21599,29 @@ MonoBehaviour:
   - {fileID: 1144850778}
   - {fileID: 1864772124}
   _dayTwoSpeedNamesUI: []
-  _dayTwoSpeedEmailsUI: []
   _dayTwoSpeedTimesUI: []
   _dayTwoSpeedCrownsUI: []
   _dayTwoCrownsNamesUI: []
-  _dayTwoCrownsEmailsUI: []
   _dayTwoCrownsTimesUI: []
   _dayTwoCrownsCrownsUI: []
   _dayThreeSpeedNamesUI: []
-  _dayThreeSpeedEmailsUI: []
   _dayThreeSpeedTimesUI: []
   _dayThreeSpeedCrownsUI: []
   _dayThreeCrownsNamesUI: []
-  _dayThreeCrownsEmailsUI: []
   _dayThreeCrownsTimesUI: []
   _dayThreeCrownsCrownsUI: []
   _dayFourSpeedNamesUI: []
-  _dayFourSpeedEmailsUI: []
   _dayFourSpeedTimesUI: []
   _dayFourSpeedCrownsUI: []
   _dayFourCrownsNamesUI: []
-  _dayFourCrownsEmailsUI: []
   _dayFourCrownsTimesUI: []
   _dayFourCrownsCrownsUI: []
+  _dayFiveSpeedNamesUI: []
+  _dayFiveSpeedTimesUI: []
+  _dayFiveSpeedCrownsUI: []
+  _dayFiveCrownsNamesUI: []
+  _dayFiveCrownsTimesUI: []
+  _dayFiveCrownsCrownsUI: []
   _interfaceCarousel:
   - {fileID: 1534695005}
   - {fileID: 153235399}
@@ -44330,6 +44474,7 @@ RectTransform:
   - {fileID: 1101201802}
   - {fileID: 1625039067}
   - {fileID: 2099215207}
+  - {fileID: 428308873}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
