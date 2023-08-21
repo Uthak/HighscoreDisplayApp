@@ -15,7 +15,7 @@ public class HighscoreDataGatherer : MonoBehaviour
 
     [Space(30)]
     [Header("DO NOT TOUCH:")]
-    public List<HighscoreEntry> overallSpeedHighscores = new List<HighscoreEntry>();
+     List<HighscoreEntry> overallSpeedHighscores = new List<HighscoreEntry>();
     public List<HighscoreEntry> overallCrownsHighscores = new List<HighscoreEntry>();
 
     public List<HighscoreEntry> dayOneSpeedHighscores = new List<HighscoreEntry>();
@@ -29,6 +29,9 @@ public class HighscoreDataGatherer : MonoBehaviour
 
     public List<HighscoreEntry> dayFourSpeedHighscores = new List<HighscoreEntry>();
     public List<HighscoreEntry> dayFourCrownsHighscores = new List<HighscoreEntry>();
+
+    public List<HighscoreEntry> dayFiveSpeedHighscores = new List<HighscoreEntry>();
+    public List<HighscoreEntry> dayFiveCrownsHighscores = new List<HighscoreEntry>();
 
     private void Start()
     {
@@ -76,6 +79,9 @@ public class HighscoreDataGatherer : MonoBehaviour
 
         dayFourSpeedHighscores = LoadListFromJson("/DayFourSpeedHighscores.json");
         dayFourCrownsHighscores = LoadListFromJson("/DayFourCrownsHighscores.json");
+
+        dayFiveSpeedHighscores = LoadListFromJson("/DayFiveSpeedHighscores.json");
+        dayFiveCrownsHighscores = LoadListFromJson("/DayFiveCrownsHighscores.json");
     }
 
     private List<HighscoreEntry> LoadListFromJson(string filePath)
@@ -110,6 +116,8 @@ public class HighscoreDataGatherer : MonoBehaviour
     public List<HighscoreEntry> GetDayFourSpeedHighscores() => dayFourSpeedHighscores;
     public List<HighscoreEntry> GetDayFourCrownsHighscores() => dayFourCrownsHighscores;
 
+    public List<HighscoreEntry> GetDayFiveSpeedHighscores() => dayFiveSpeedHighscores;
+    public List<HighscoreEntry> GetDayFiveCrownsHighscores() => dayFiveCrownsHighscores;
 
     public void TestOutput()
     {
