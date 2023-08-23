@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.Video;
 
 public class HighscoreUIManager : MonoBehaviour
 {
@@ -92,6 +93,14 @@ public class HighscoreUIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] _dayFiveCrownsTimesUI;
     [SerializeField] private TextMeshProUGUI[] _dayFiveCrownsCrownsUI;
 
+    [Header("Video UI Settings:")]
+    [SerializeField] private VideoPlayer _videoPlayer;  // Reference to the Video Player component
+    [Tooltip("Will play video for this amt. If amt = 0.0f then it will play full video!")]
+    [SerializeField] private float _videoDurationOverride = 0.0f;
+    [Tooltip("Copy+paste the name of the UI with the video attached to it in here!")]
+    [SerializeField] private string _videoUIName = "VideoUI";
+
+    [Header("Carousel of all UI's:")]
     [SerializeField] GameObject[] _interfaceCarousel;
 
     HighscoreDataGatherer _highscoreDataGatherer;
@@ -282,8 +291,44 @@ public class HighscoreUIManager : MonoBehaviour
         int milliseconds = (int)(1000 * (time - minutes * 60 - seconds));
         return string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliseconds);
     }
+    IEnumerator UIRotation()
+    {
+        for (int i = 0; i < _interfaceCarousel.Length; i++)
+        {
+            // check if the current UI is for the day interface:
+            if (i == _dayInterfaceSlot)
+            {
+                GameObject currentDayUI = GetCurrentDayUI();
+                currentDayUI.SetActive(true);
+                yield return new WaitForSeconds(_rotationInterval);
+                currentDayUI.SetActive(false);
+            }
+            // check if the current UI is the Video UI and determine the length for which to display it:
+            else if (_interfaceCarousel[i].name == _videoUIName)
+            {
+                _interfaceCarousel[i].SetActive(true);
 
+                if (_videoDurationOverride > 0) // If there's an override
+                {
+                    yield return new WaitForSeconds(_videoDurationOverride);
+                }else
+                {
+                    float videoDuration = (float)_videoPlayer.clip.length;
+                    yield return new WaitForSeconds(videoDuration);
+                }
 
+                _interfaceCarousel[i].SetActive(false);
+            }
+            else
+            {
+                _interfaceCarousel[i].SetActive(true);
+                yield return new WaitForSeconds(_rotationInterval);
+                _interfaceCarousel[i].SetActive(false);
+            }
+        }
+        StartCoroutine(UIRotation());
+    }
+    /*
     IEnumerator UIRotation()
     {
         for (int i = 0; i < _interfaceCarousel.Length; i++)
@@ -303,6 +348,7 @@ public class HighscoreUIManager : MonoBehaviour
         }
         StartCoroutine(UIRotation());
     }
+    */
 
     // Utility function to get the UI GameObject for the current day
     private GameObject GetCurrentDayUI()
